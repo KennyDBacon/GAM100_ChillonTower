@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{efb44211-185d-48bb-9d4c-d5e032b5cf10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens">
+      <UniqueIdentifier>{6a7c199b-f3bb-4422-87e6-30f122c96a23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object Files">
+      <UniqueIdentifier>{1c25dd1c-d437-455e-afe3-072e10f7d41e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc">
+      <UniqueIdentifier>{f93edb87-921a-4c5b-83af-90647223a31a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LogoScreen.c">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScreen.c">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScreen.c">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScreen.c">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenManager.c">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.c">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="TileManager.c">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.c">
+      <Filter>Object Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.c">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures.c">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.c">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LogoScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="TileManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Object Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalDefines.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
