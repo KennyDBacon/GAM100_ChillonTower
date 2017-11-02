@@ -8,4 +8,6 @@ typedef enum {
 	Tex_Player
 } TextureID;
 
+void Textures_Init();
+
 unsigned char Textures_GetChar(TextureID textureID, int xCount, int yCount, int direction);

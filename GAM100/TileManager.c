@@ -2,16 +2,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "TileManager.h"
 #include "GlobalDefines.h"
+#include "TileManager.h"
 
-static Tile *tiles[SCREEN_HEIGHT][SCREEN_WIDTH];
+int const levelOneLayout[TILE_COUNT_Y][TILE_COUNT_X] = {
+	{ 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+	{ 1, 1, 1, 1, 0, 1, 0, 0, 0 },
+	{ 1, 1, 1, 1, 0, 1, 0, 0, 0 },
+	{ 1, 0, 0, 0, 0, 1, 1, 1, 1 },
+	{ 1, 0, 0, 0, 0, 0, 0, 0, 0 }
+};
+
+static Tile *tiles[TILE_COUNT_Y][TILE_COUNT_X];
 
 void TileManager_Init() {
 	/* Initialize all the tiles */
-	for (int yIndex = 0; yIndex < SCREEN_HEIGHT; ++yIndex) {
-		for (int xIndex = 0; xIndex < SCREEN_WIDTH; ++xIndex) {
-			if (yIndex == 0 || yIndex == SCREEN_HEIGHT - 1 || xIndex == 0 || xIndex == SCREEN_WIDTH - 1) {
+	for (int yIndex = 0; yIndex < TILE_COUNT_Y; ++yIndex) {
+		for (int xIndex = 0; xIndex < TILE_COUNT_X; ++xIndex) {
+			if (levelOneLayout[yIndex][xIndex] == 0) {
 				tiles[yIndex][xIndex] = Tile_Create(Tex_Wall, xIndex, yIndex, 0);
 			}
 			else {
@@ -35,8 +43,8 @@ void TileManager_Refresh() {
 	writeHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(writeHandle, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 
-	for (int yIndex = 0; yIndex < SCREEN_HEIGHT; ++yIndex) {
-		for (int xIndex = 0; xIndex < SCREEN_WIDTH; ++xIndex) {
+	for (int yIndex = 0; yIndex < TILE_COUNT_Y; ++yIndex) {
+		for (int xIndex = 0; xIndex < TILE_COUNT_X; ++xIndex) {
 			for (int yCount = 0; yCount < TILE_HEIGHT; ++yCount) {
 				for (int xCount = 0; xCount < TILE_WIDTH; ++xCount) {
 					line[xCount] = Tile_GetTexture(tiles[yIndex][xIndex], xCount, yCount);

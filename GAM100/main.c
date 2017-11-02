@@ -1,5 +1,6 @@
 #include <Windows.h>
 
+#include "GlobalDefines.h"
 #include "GameManager.h"
 
 void SetupConsole() {
@@ -17,7 +18,7 @@ void SetupConsole() {
 	SMALL_RECT windowSize = { 100, 100, 1280, 720 };
 	SetConsoleWindowInfo(writeHandle, 1, &windowSize);
 
-	COORD bufferSize = { 137, 53 };
+	COORD bufferSize = { SCREEN_CHAR_X, SCREEN_CHAR_Y + 1 };
 	SetConsoleScreenBufferSize(writeHandle, bufferSize);
 
 	SetWindowPos(windowHandle, HWND_TOP, windowSize.Left, windowSize.Top, windowSize.Right, windowSize.Bottom, 0);

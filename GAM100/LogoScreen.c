@@ -15,10 +15,11 @@ void LogoScreen_Init() {
 void LogoScreen_Update(float dt) {
 	timer += dt;
 	printf("Logo Screen Updating (%f)\n", timer);
+	ScreenManager_SetScreenTo(Screen_Title);
 
-	if (timer >= 2000.0f) {
+	/*if (timer >= 2000.0f) {
 		ScreenManager_SetScreenTo(Screen_Title);
-	}
+	}*/
 }
 
 void LogoScreen_Exit() {

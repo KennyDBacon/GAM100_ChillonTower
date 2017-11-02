@@ -6,38 +6,40 @@
 #include "TileManager.h"
 #include "GameScreen.h"
 
-#define MAX_TILE_X 137
-#define MAX_TILE_Y 52
+#define UI_ANCHOR_X 2
+#define UI_ANCHOR_Y (SCREEN_CHAR_Y - GAMESCREEN_UI_HEIGHT)
 
 int const UILayouts[17][5] = {
+	/* { ascii, startX, startY, width, height } */
+
 	/* Long vertical bars */
-	{ 205, 0, 0, MAX_TILE_X, 1 },
-	{ 205, 0, MAX_TILE_Y - 13, MAX_TILE_X, 1 },
-	{ 205, 0, MAX_TILE_Y - 1, MAX_TILE_X, 1 },
+	{ 205, 0, 0, SCREEN_CHAR_X, 1 },
+	{ 205, 0, SCREEN_CHAR_Y - GAMESCREEN_UI_HEIGHT - 2, SCREEN_CHAR_X, 1 },
+	{ 205, 0, SCREEN_CHAR_Y - 1, SCREEN_CHAR_X, 1 },
 	/* Long horizontal bars */
-	{ 186, 0, 0, 1, MAX_TILE_Y },
-	{ 186, MAX_TILE_X - 1, 0, 1, MAX_TILE_Y },
+	{ 186, 0, 0, 1, SCREEN_CHAR_Y },
+	{ 186, SCREEN_CHAR_X - 1, 0, 1, SCREEN_CHAR_Y },
 	/* Far corners */
 	{ 201, 0, 0, 1, 1 },
-	{ 204, 0, MAX_TILE_Y - 13, 1, 1 },
-	{ 200, 0, MAX_TILE_Y - 1, 1, 1 },
-	{ 187, MAX_TILE_X - 1, 0, 1, 1 },
+	{ 188, SCREEN_CHAR_X - 1, SCREEN_CHAR_Y - 1, 1, 1 },
+	{ 200, 0, SCREEN_CHAR_Y - 1, 1, 1 },
+	{ 187, SCREEN_CHAR_X - 1, 0, 1, 1 },
 	/* Middle sides */
-	{ 185, MAX_TILE_X - 1, MAX_TILE_Y - 13, 1, 1 },
-	{ 188, MAX_TILE_X - 1, MAX_TILE_Y - 1, 1, 1 },
-	/* Middle vertical with corners */
-	{ 186, 52, MAX_TILE_Y - 13, 1, 12 },
-	{ 203, 52, MAX_TILE_Y - 13, 1, 1 },
-	{ 202, 52, MAX_TILE_Y - 1, 1, 1 },
-	/* Middle vertical with corners */
-	{ 186, 83, MAX_TILE_Y - 13, 1, 12 },
-	{ 203, 83, MAX_TILE_Y - 13, 1, 1 },
-	{ 202, 83, MAX_TILE_Y - 1, 1, 1 }
+	{ 204, 0, SCREEN_CHAR_Y - GAMESCREEN_UI_HEIGHT - 2, 1, 1 },
+	{ 185, SCREEN_CHAR_X - 1, SCREEN_CHAR_Y - GAMESCREEN_UI_HEIGHT - 2, 1, 1 },
+	/* Left middle vertical with corners */
+	{ 186, 52, SCREEN_CHAR_Y - GAMESCREEN_UI_HEIGHT - 1, 1, GAMESCREEN_UI_HEIGHT },
+	{ 203, 52, SCREEN_CHAR_Y - GAMESCREEN_UI_HEIGHT - 2, 1, 1 },
+	{ 202, 52, SCREEN_CHAR_Y - 1, 1, 1 },
+	/* Right middle vertical with corners */
+	{ 186, 83, SCREEN_CHAR_Y - GAMESCREEN_UI_HEIGHT - 1, 1, GAMESCREEN_UI_HEIGHT },
+	{ 203, 83, SCREEN_CHAR_Y - GAMESCREEN_UI_HEIGHT - 2, 1, 1 },
+	{ 202, 83, SCREEN_CHAR_Y - 1, 1, 1 }
 };
 
 /* StartX, StartY, Width, Height */
-int const healthBarInfo[4] = { 2, 41, PLAYER_HEALTH_MAX, 1 };
-int const manaBarInfo[4] = { 2, 43, PLAYER_HEALTH_MAX, 1 };
+int const healthBarInfo[4] = { UI_ANCHOR_X, UI_ANCHOR_Y, PLAYER_HEALTH_MAX, 1 };
+int const manaBarInfo[4] = { UI_ANCHOR_X, UI_ANCHOR_Y + 2, PLAYER_HEALTH_MAX, 1 };
 
 int const barIndent = 8;
 
@@ -47,6 +49,8 @@ char const manaText[] = { "Mana" };
 void GameScreen_Init() {
 	int yIndex;
 	int xCount;
+
+	Textures_Init();
 
 	for (yIndex = 0; yIndex < _countof(UILayouts); ++yIndex) {
 		unsigned char block = (unsigned char)UILayouts[yIndex][0];
